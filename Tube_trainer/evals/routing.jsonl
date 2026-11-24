@@ -1,0 +1,7 @@
+{"request":"Summarize this video in 10 bullets","intent":"summarize"}
+{"request":"Make study notes about chunking","intent":"notes"}
+{"request":"Quiz me with 5 questions","intent":"quiz"}
+{"request":"Explain reranking simply","intent":"explain"}
+{"request":"Create a 3 week study plan","intent":"plan"}
+{"request":"What does reciprocal rank fusion do?","intent":"qa"}
+{"request":"Summarize and quiz me","intent":"unclear"}

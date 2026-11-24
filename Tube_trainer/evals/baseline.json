@@ -1,0 +1,6 @@
+{
+  "routing_accuracy": 1.0,
+  "retrieval_hit_rate": 1.0,
+  "test_pass_rate": 1.0,
+  "margin": 0.05
+}

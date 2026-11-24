@@ -1,0 +1,13 @@
+# Phase 0: Core Dependencies
+python-dotenv==1.0.0
+requests==2.31.0
+groq==0.11.0
+sentence-transformers==3.0.1
+docling
+qdrant-client
+rank-bm25
+fastapi
+uvicorn
+python-jose[cryptography]
+pytest
+httpx
