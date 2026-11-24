@@ -9,20 +9,78 @@ Turn YouTube cooking videos into structured recipes grounded in their transcript
 - `data/` – local datasets or generated files
 - `config/` – configuration files
 
-## Quick start
+## How to run
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-3. Run the app:
-   ```bash
-   python -m tube_trainer.main
-   ```
-4. Enter a YouTube cooking video URL. The app caches its transcript and indexes timestamped passages.
-5. Select **Extract recipe from indexed video** or enter `Extract the recipe from this video` to get a simple numbered recipe with links to its source timestamps. Other study tools and transcript questions are also available.
-6. In the CLI, enter a recipe request at the prompt. Enter a blank line or `q` to exit.
+### Prerequisites
+
+- Python 3.10 or newer
+- Internet access for loading YouTube transcripts
+- Windows PowerShell commands are shown below; adapt activation and paths as needed on macOS or Linux
+
+### Set up from a terminal
+
+From the repository root:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+If PowerShell blocks `.venv\Scripts\Activate.ps1`, activate with Command Prompt instead:
+
+```bat
+.venv\Scripts\activate.bat
+```
+
+To create the environment and install dependencies without activating it, use:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -e .
+```
+
+### Run the Streamlit interface
+
+```powershell
+python -m streamlit run src/tube_trainer/app.py
+```
+
+When running without activation, use:
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run src/tube_trainer/app.py
+```
+
+Streamlit prints a local URL, usually `http://localhost:8501`, and opens it in your browser.
+
+### Run the command-line interface
+
+```powershell
+python -m tube_trainer.main
+```
+
+Enter a YouTube video or playlist URL when prompted. The app caches transcripts and indexes timestamped passages. Then enter a request such as:
+
+- `Extract the recipe from this video`
+- `Summarize this video in 10 bullets`
+- `Make study notes`
+- `Quiz me on this video`
+
+Enter a blank line or `q` to exit the prompt.
+
+### Run tests and the regression gate
+
+```powershell
+python -m pytest
+python evals/run_gate.py
+```
+
+The gate writes metrics to `evals/reports/latest.json`.
 
 The recipe extractor is deterministic and transcript-grounded; it does not use an LLM or fill in amounts and steps that the video does not state. Local SQLite stores transcripts, indexes, learner memory, and request traces.
 
